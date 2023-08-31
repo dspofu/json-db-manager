@@ -1,5 +1,5 @@
-# managerDB
-[<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="25">](https://github.com/dspofu/managerDB) [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/2560px-Npm-logo.svg.png" alt="NPM" width="25">](https://www.npmjs.com/package/managerDB) | Gerenciador de json como "data base(DB)" local
+# [<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="35">](https://github.com/dspofu/managerDB) managerDB [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/2560px-Npm-logo.svg.png" alt="NPM" width="40">](https://www.npmjs.com/package/managerDB)
+Gerenciador de json como "data base(DB)" local
 
 Um simples ou até mesmo um __avançado__ gerenciador de arquivos em json para usar como quiser.
 
