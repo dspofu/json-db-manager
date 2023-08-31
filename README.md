@@ -4,12 +4,12 @@ Gerenciador de json como "data base(DB)" local
 Um simples ou até mesmo um __avançado__ gerenciador de arquivos em json para usar como quiser.
 
 ## Metodos
-
+<pre>const db = new DB();</pre>
 ### GET
 
 __path__ é uma função que vai te fornecer os objetos assim que você inserir o caminho do arquivo json
 
-<pre>console.log(new DB().path("./dir").get())</pre>
+<pre>console.log(db.path("./dir").get())</pre>
 <pre>
   {
     "KeyExample": {"velueExamples": [0, "1", [2, 2.5]},
@@ -21,7 +21,7 @@ __path__ é uma função que vai te fornecer os objetos assim que você inserir 
 
 Passe a chave *"key"* de sua preferencia e o valor *"value"*
 
-<pre>new DB().path("./dir").set("key", "value");</pre>
+<pre>db.path("./dir").set("key", "value");</pre>
 // Resultado
 <pre>
   {
@@ -34,7 +34,7 @@ Passe a chave *"key"* de sua preferencia e o valor *"value"*
 
 Passe a chave *"key"* que deseje deletar
 
-<pre>new DB().path("./dir").delete("keyExample")</pre>
+<pre>db.path("./dir").delete("keyExample")</pre>
 // Resultado
 <pre>
   {
@@ -47,7 +47,7 @@ Passe a chave *"key"* que deseje deletar
 
 Deleta todo json e o deixa já preparado para novos valores
 
-<pre>new DB().path("./dir").clear()</pre>
+<pre>db.path("./dir").clear()</pre>
 // Resultado
 <pre>
   {
