@@ -10,6 +10,7 @@ Um simples ou até mesmo um __avançado__ gerenciador de arquivos em json para u
 __path__ é uma função que vai te fornecer os objetos assim que você inserir o caminho do arquivo json
 
 <pre>console.log(db.path("./dir").get())</pre>
+// Resultado `exemplo`
 <pre>
   {
     "KeyExample": {"velueExamples": [0, "1", [2, 2.5]},
