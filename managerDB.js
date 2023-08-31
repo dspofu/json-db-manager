@@ -1,16 +1,16 @@
 import { readFileSync, writeFileSync } from "node:fs"
-const src = (param) => {
+const src = (dir) => {
     return {
-        get: JSON.parse(readFileSync(`./src/config/system/json/${param}.json`)),
-        path: `./src/config/system/json/${param}.json`
+        get: JSON.parse(readFileSync(dir),
+        path: dir
     }
 }
 function compact(param) {
     return {
         get: () => param.get,
         /**
-         * @param {any} key - example (key: "?", ...)
-         * @param {any} value - value: example (..., value: "?")
+         * @param {any} key - example (...: "value")
+         * @param {any} value - value: example ("key": "...")
          */
         set: (key, value) => {
             if (!key || value === undefined && typeof key !== 'object') throw new Error("Obrigatório o uso: \"key\", \"value\"")
