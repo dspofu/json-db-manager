@@ -1,7 +1,7 @@
 # managerDB
 Gerenciador de json como "data base(DB)" local
 
-Um simples __avançado__ gerenciador de arquivos em json para usar como quiser.
+Um simples ou até mesmo um __avançado__ gerenciador de arquivos em json para usar como quiser.
 
 ## Metodos
 
