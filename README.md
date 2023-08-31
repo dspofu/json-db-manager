@@ -24,9 +24,9 @@ Passe a chave *"key"* de sua preferencia e o valor *"value"*
 <pre>new DB().path("./dir").set("key", "value");</pre>
 // Resultado
 <pre>
-{
-  "key": "value"
-}</pre>
+  {
+    "key": "value"
+  }</pre>
 
 ## 
 
@@ -34,8 +34,13 @@ Passe a chave *"key"* de sua preferencia e o valor *"value"*
 
 Passe a chave *"key"* que deseje deletar
 
-<pre>new DB().path("./dir").delete("key")</pre>
-
+<pre>new DB().path("./dir").delete("keyExample")</pre>
+// Resultado
+<pre>
+  {
+    "KeyExample1": 8,
+  }
+</pre>
 ## 
 
 ### CLEAR
@@ -45,7 +50,7 @@ Deleta todo json e o deixa já preparado para novos valores
 <pre>new DB().path("./dir").clear()</pre>
 // Resultado
 <pre>
-{
-  // void
-}
+  {
+    // void
+  }
 </pre>
