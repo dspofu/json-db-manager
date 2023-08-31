@@ -12,8 +12,8 @@ __path__ é uma função que vai te fornecer os objetos assim que você inserir 
 <pre>console.log(new DB().path("./dir").get())</pre>
 <pre>
   {
-    "KeyExample": {"velueExamples": [0, "1", [2, 2.5], undefined, null, 6-1, "six", {"seven": 7}]},
-    "KeyExample1": 8,
+    "KeyExample": {"velueExamples": [0, "1", [2, 2.5]},
+    "KeyExample1": 3,
   }
 </pre>
 ## 
