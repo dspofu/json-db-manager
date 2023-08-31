@@ -9,16 +9,24 @@ Um simples __avançado__ gerenciador de arquivos em json para usar como quiser.
 
 __path__ é uma função que vai te fornecer os objetos assim que você inserir o caminho do arquivo json
 
-__console.log(new DB().path("./dir").get())__
+<pre>console.log(new DB().path("./dir").get())</pre>
+<pre>
+  {
+    "KeyExample": {"velueExamples": [0, "1", [2, 2.5], undefined, null, 6-1, "six", {"seven": 7}]},
+    "KeyExample1": 8,
+  }
+</pre>
 ## 
 ### SET
 
 Passe a chave *"key"* de sua preferencia e o valor *"value"*
 
-__new DB().path("./dir").set("key", "value")__
-<h6>{
+<pre>new DB().path("./dir").set("key", "value");</pre>
+// Resultado
+<pre>
+{
   "key": "value"
-}</h6>Resultado
+}</pre>
 
 ## 
 
@@ -26,7 +34,7 @@ __new DB().path("./dir").set("key", "value")__
 
 Passe a chave *"key"* que deseje deletar
 
-__new DB().path("./dir").delete("key")__
+<pre>new DB().path("./dir").delete("key")</pre>
 
 ## 
 
@@ -34,4 +42,10 @@ __new DB().path("./dir").delete("key")__
 
 Deleta todo json e o deixa já preparado para novos valores
 
-__new DB().path("./dir").clear()__
+<pre>new DB().path("./dir").clear()</pre>
+// Resultado
+<pre>
+{
+  // void
+}
+</pre>
