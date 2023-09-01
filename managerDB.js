@@ -1,11 +1,8 @@
-import { readFileSync, writeFileSync } from "node:fs"
-const src = (dir) => {
-    return {
-        get: JSON.parse(readFileSync(dir)),
-        path: dir
-    }
-}
+import { readFileSync, writeFileSync, existsSync } from "node:fs"
+
 function compact(param) {
+  let space;
+  if (!param.space) {space = 0} else {space = param.space}
     return {
         get: () => param.get,
         /**
@@ -13,28 +10,44 @@ function compact(param) {
          * @param {any} value - value: example ("key": "...")
          */
         set: (key, value) => {
-            if (!key || value === undefined && typeof key !== 'object') throw new Error("Obrigatório o uso: \"key\", \"value\"")
-            if (typeof key == 'object') return writeFileSync(param.path, JSON.stringify(key, null, 4));
+            if (!key || value === undefined && typeof key !== 'object') throw new Error("Modo de uso: \"key\", \"value\"");
+            if (typeof key == 'object') return writeFileSync(param.path, JSON.stringify(key, null, space));
             param.get[key] = value
-            writeFileSync(param.path, JSON.stringify(param.get, null, 4))
+            writeFileSync(param.path, JSON.stringify(param.get, null, space));
         },
         /**
-         * @param {*} key - Use: "key" para apagar especifico.
+         * @param {*} key - Use: "key" para apagar um item especifico.
          */
         delete: (key) => {
-            if (!key) throw new Error("Obrigatório o uso de uma chave: \"key\"")
-            if (typeof key !== "string"/* && typeof key !== 'object'*/) throw new Error("String não identificada.")
+            if (!key) throw new Error("Obrigatório o uso de uma chave: \"key\"");
+            if (typeof key !== "string"/* && typeof key !== 'object'*/) throw new Error("String não identificada.");
             delete param.get[key]
-            writeFileSync(param.path, JSON.stringify(param.get, null, 4))
+            writeFileSync(param.path, JSON.stringify(param.get, null, space));
         },
-        clear: () => {
-            writeFileSync(param.path, "{}")
-        }
+        clear: () => { writeFileSync(param.path, "{}"); }
     }
 }
-class DB {
-    constructor() {
-        this.path=(param)=>compact(src(param))
+class ManagerDB {
+  /**
+  * @param {Number} space - Controle do espaçamento do json.
+  */
+    constructor(space) {
+        this.path=(dir)=>{
+          if (!existsSync(dir)) { throw new Error("Caminho não encontrado."); }
+          else if (!readFileSync(dir, 'utf-8')) {
+            writeFileSync(dir, '{}')
+            return compact({
+              get: JSON.parse(readFileSync(dir, 'utf-8')),
+              path: dir,
+              space
+            })
+          }
+          else return compact({
+            get: JSON.parse(readFileSync(dir, 'utf-8')), // Conteudo do json
+            path: dir, // Caminho do arquivo
+            space // Espaçamento do Json
+        });
+      }
     }
 }
-export { DB }
+export { ManagerDB }
