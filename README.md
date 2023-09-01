@@ -5,6 +5,10 @@ _<li>Compatível com ES5 & ES6_</li>
 
 <pre><code>const db = new ManagerDB();</code></pre>
 
+Você pode escolher o espacamendo colocando o numero de espaço dentro da classe `ManagerDB`, sendo o `padrão: 0`
+
+<pre><code>new ManagerDB(2); // Espaçamento adicional</code></pre>
+
 ## Metodos
 ### GET
 
@@ -43,6 +47,4 @@ Deleta todo json e o deixa já preparado para novos valores
 
 <pre><code>db.path("./dir").clear()</code></pre>
 // Resultado `exemplo`
-<pre><code>  {
-    // void
-  }</code></pre>
+<pre><code>{} // Void</code></pre>
