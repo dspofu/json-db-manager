@@ -23,7 +23,7 @@ __path__ é uma função que vai te fornecer os objetos assim que você inserir 
 Passe a chave *"key"* de sua preferencia e o valor *"value"*
 
 <pre>db.path("./dir").set("key", "value");</pre>
-// Resultado
+// Resultado `exemplo`
 <pre>
   {
     "key": "value"
@@ -36,7 +36,7 @@ Passe a chave *"key"* de sua preferencia e o valor *"value"*
 Passe a chave *"key"* que deseje deletar
 
 <pre>db.path("./dir").delete("keyExample")</pre>
-// Resultado
+// Resultado `exemplo`
 <pre>
   {
     "KeyExample1": 8,
@@ -49,7 +49,7 @@ Passe a chave *"key"* que deseje deletar
 Deleta todo json e o deixa já preparado para novos valores
 
 <pre>db.path("./dir").clear()</pre>
-// Resultado
+// Resultado `exemplo`
 <pre>
   {
     // void
