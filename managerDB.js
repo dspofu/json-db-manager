@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs"
 const src = (dir) => {
     return {
-        get: JSON.parse(readFileSync(dir),
+        get: JSON.parse(readFileSync(dir)),
         path: dir
     }
 }
