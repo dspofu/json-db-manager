@@ -6,13 +6,13 @@
   "keywords": [
     "JSON",
     "DataBase",
-    "Utilities",
+    "Utils",
     "Back-End",
     "Server",
     "http",
     "https", 
     "node"
   ],
-  "author": ["Dspofu <https://github.com/dspofu/>"],
+  "author": "Dspofu <https://github.com/dspofu/>",
   "license": "ISC"
 }
