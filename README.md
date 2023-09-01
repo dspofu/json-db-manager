@@ -13,7 +13,7 @@ __path__ é uma função que vai te fornecer os objetos assim que você inserir 
 // Resultado `exemplo`
 <pre>
   {
-    "KeyExample": {"velueExamples": [0, "1", [2, 2.5]},
+    "KeyExample": {"velueExamples": [0, "1", [2, 2.5]]},
     "KeyExample1": 3,
   }
 </pre>

@@ -1,18 +1,27 @@
 {
-  "name": "managerDB",
+  "name": "manager.db",
   "version": "0.0.10",
   "description": "Otimização em JSON: Simplifica e aprimora operações de leitura, escrita e gerenciamento de dados.",
-  "main": "main.js"
+  "main": "managerDB.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dspofu/managerDB.git"
+  },
   "keywords": [
     "JSON",
     "DataBase",
-    "Utils",
+    "Utilities",
     "Back-End",
     "Server",
     "http",
-    "https", 
+    "https",
     "node"
   ],
   "author": "Dspofu <https://github.com/dspofu/>",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dspofu/managerDB/issues"
+  },
+  "homepage": "https://github.com/dspofu/managerDB#readme",
+  "type": "module"
 }
