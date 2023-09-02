@@ -23,5 +23,5 @@
     "url": "https://github.com/dspofu/managerDB/issues"
   },
   "homepage": "https://github.com/dspofu/managerDB#readme",
-  "type": "module"
+  "type": "commonjs"
 }
