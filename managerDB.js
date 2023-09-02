@@ -20,7 +20,7 @@ function compact(param) {
          */
         delete: (key) => {
             if (!key) throw new Error("Obrigatório o uso de uma chave: \"key\"");
-            if (typeof key !== "string"/* && typeof key !== 'object'*/) throw new Error("String não identificada.");
+            if (typeof key !== "string") throw new Error("String não identificada.");
             delete param.get[key]
             writeFileSync(param.path, JSON.stringify(param.get, null, space));
         },
@@ -32,7 +32,8 @@ class ManagerDB {
   * @param {Number} space - Controle do espaçamento do json.
   */
     constructor(space) {
-        this.path=(dir)=>{
+      if (typeof space !== "number") throw new Error(`Tenho certeza de que \"${space}\" não é um numero.`);
+      this.path=(dir)=>{
           if (!existsSync(dir)) { throw new Error("Caminho não encontrado."); }
           else if (!readFileSync(dir, 'utf-8')) {
             writeFileSync(dir, '{}')
