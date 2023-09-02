@@ -1,7 +1,10 @@
 # [<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="35">](https://github.com/dspofu/managerDB) ManagerDB [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/2560px-Npm-logo.svg.png" alt="NPM" width="40">](https://www.npmjs.com/package/managerDB)
 
 Um simples gerenciador de json como "data base(DB)" local em sua aplicação bem __avançado__ e __maleável__ para usar como quiser.
-_<li>Compatível com ES5 & ES6_</li>
+<ul>
+<li>Compatível com ES5 & ES6</li>
+<li>Allowed to use "require()" and "import"</li>
+</ul>
 
 <pre><code>const db = new ManagerDB();</code></pre>
 
