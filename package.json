@@ -1,11 +1,11 @@
 {
-  "name": "db.json",
+  "name": "json-db-manager",
   "version": "0.1.15",
   "description": "Otimização em JSON: Simplifica e aprimora operações de leitura, escrita e gerenciamento de dados.",
   "main": "DB.Json.cjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dspofu/db.json.git"
+    "url": "git+https://github.com/dspofu/json-db-manager.git"
   },
   "keywords": [
     "JSON",
@@ -20,8 +20,8 @@
   "author": "Dspofu <https://github.com/dspofu/>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dspofu/db.json/issues"
+    "url": "https://github.com/dspofu/json-db-manager/issues"
   },
-  "homepage": "https://github.com/dspofu/db.json#readme",
+  "homepage": "https://github.com/dspofu/json-db-manager#readme",
   "type": "commonjs"
 }
