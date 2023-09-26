@@ -4,7 +4,15 @@ function utf8(param) {
   let space;
   if (!param.space) {space = 0} else {space = param.space}
     return {
-        get: () => param.get,// fazer uma busrca por "key"
+      /**
+       * @param {any} key - example: get("key") || get()
+       * @returns 
+       */
+        get: (key) => {
+          if (!key) return param.get;
+          if (!param.get[key]) return;
+          return param.get[key]
+        },
         /**
          * @param {any} key - example (...: "value")
          * @param {any} value - value: example ("key": "...")
@@ -39,12 +47,14 @@ function base64(param) {
   let space;
   if (!param.space) {space = 0} else {space = param.space}
     return {
-        get: () => {
+        get: (key) => {
           let obj = {}
           let keys = []
           Object.keys(param.get).map((value) => keys.push(value))
           Object.values(param.get).map((value, index) => ({ [keys[index]]: Buffer.from(value, 'base64').toString("utf-8") }) ).map((value, index) => {Object.assign(obj, value) })
-          return obj
+          if (!key) return obj;
+          if (!param.get[key]) return;
+          return Buffer.from(JSON.stringify(obj[key], null, space)).toString("utf-8");
         },
         /**
          * @param {any} key - example (...: "value")
@@ -94,14 +104,14 @@ function modify(dir, space, codifyType) {
     });
   } else { // base64
     return base64({
-      get: JSON.parse(readFileSync(dir, 'utf-8')),//Buffer.from(readFileSync(dir, 'utf-8'), 'base64').toString('utf-8'),
+      get: JSON.parse(readFileSync(dir, 'utf-8')),
       path: dir,
       space
     });
   }
 }
 
-class ManagerDB {
+class JsonDB {
   /**
   * @param {Number} space - Controle do espaçamento do json. Padão: "0"
   * @param {string} codifyType - Escrita e transcrita de "base64". Padrão: "utf-8"
@@ -117,4 +127,4 @@ class ManagerDB {
     }
 }
 
-module.exports = { ManagerDB }
+module.exports = { JsonDB }

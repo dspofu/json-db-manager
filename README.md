@@ -1,4 +1,4 @@
-# [<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="35">](https://github.com/dspofu/managerDB) ManagerDB [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/2560px-Npm-logo.svg.png" alt="NPM" width="46">](https://www.npmjs.com/package/managerDB)
+# [<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="35">](https://github.com/dspofu/db.json) db.json [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/2560px-Npm-logo.svg.png" alt="NPM" width="46">](https://www.npmjs.com/package/db.json)
 
 Um simples gerenciador de json como "data base(DB)" local em sua aplicação bem __avançado__ e __maleável__ para usar como quiser.
 
@@ -6,20 +6,20 @@ Um simples gerenciador de json como "data base(DB)" local em sua aplicação bem
 - Allowed to use "require()" and "import"
 
 ```js
-const db = new ManagerDB();
+const db = new JsonDB();
 ```
 
->Você pode escolher o espacamendo colocando o numero de espaço dentro da classe `ManagerDB`, sendo o `padrão: 0`
+>Você pode escolher o espacamendo colocando o numero de espaço dentro da classe `JsonDB`, sendo o `padrão: 0`
 
 
 ```js
-new ManagerDB(2); // Espaçamento adicional
+new JsonDB(2); // Espaçamento adicional
 ```
 
 >Você tambem poderá optar entre um `json` armazenando "base64" ou "utf-8" que é o padrão. Para "uft-8" não insira um segundo parâmetro.
 
 ```js
-new ManagerDB(0, "base64"); // Codificação opicional
+new JsonDB(0, "base64"); // Codificação opicional
 ```
 
 ## Metodos
