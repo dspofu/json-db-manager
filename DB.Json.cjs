@@ -5,7 +5,7 @@ function utf8(param) {
   if (!param.space) {space = 0} else {space = param.space}
     return {
       /**
-       * @param {any} key - example: get("key") || get()
+       * @param {string} key - example: get("key") || get()
        * @returns 
        */
         get: (key) => {
@@ -31,7 +31,8 @@ function utf8(param) {
             writeFileSync(param.path, JSON.stringify(param.get, null, space));
         },
         /**
-         * @param {*} key - Use: "key" para apagar um item especifico.
+         * @param {string} key - Use: "key" para apagar um item especifico.
+         * @returns
          */
         delete: (key) => {
             if (!key) throw new Error("Obrigatório o uso de uma chave: \"key\"");
@@ -47,6 +48,10 @@ function base64(param) {
   let space;
   if (!param.space) {space = 0} else {space = param.space}
     return {
+      /**
+       * @param {string} key - example: get("key") || get()
+       * @returns 
+       */
         get: (key) => {
           let obj = {}
           let keys = []
@@ -58,7 +63,7 @@ function base64(param) {
         },
         /**
          * @param {any} key - example (...: "value")
-         * @param {any} value - value: example ("key": "...")
+         * @param {string} value - value: example ("key": "...")
          */
         set: (key, value) => {
             if (!key || value === undefined && typeof key !== 'object') throw new Error("Modo de uso: \"key\", \"value\".");
@@ -79,7 +84,8 @@ function base64(param) {
             writeFileSync(param.path, JSON.stringify(param.get, null, space));
         },
         /**
-         * @param {*} key - Use: "key" para apagar um item especifico.
+         * @param {string} key - Use: "key" para apagar um item especifico.
+         * @returns
          */
         delete: (key) => {
             if (!key) throw new Error("Obrigatório o uso de uma chave: \"key\"");
@@ -115,6 +121,7 @@ class JsonDB {
   /**
   * @param {Number} space - Controle do espaçamento do json. Padão: "0"
   * @param {string} codifyType - Escrita e transcrita de "base64". Padrão: "utf-8"
+  * @returns
   */
     constructor(space, codifyType) {
       if (typeof space !== "number" && space) throw new Error(`Tenho certeza de que \"${space}\" não é um numero.`);

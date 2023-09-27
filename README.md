@@ -29,6 +29,7 @@ __path__ é uma função que vai te fornecer os objetos assim que você inserir 
 
 ```js
 console.log(db.path("./dir").get())
+// db.path("./dir").get("KeyExample")  Para procurar por uma lista especifica
 ```
 #### Resultado `exemplo`
 ```js
