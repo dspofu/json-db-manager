@@ -1,8 +1,8 @@
 {
   "name": "json-db-manager",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Otimização em JSON: Simplifica e aprimora operações de leitura, escrita e gerenciamento de dados.",
-  "main": "DB.Json.cjs",
+  "main": "DB.Json.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dspofu/json-db-manager.git"
