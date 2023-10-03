@@ -18,7 +18,7 @@
     "node"
   ],
   "author": "Dspofu <https://github.com/dspofu/>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/dspofu/json-db-manager/issues"
   },
