@@ -1,22 +1,22 @@
 # [<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="35">](https://github.com/dspofu/json-db-manager) json-db-manager [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/2560px-Npm-logo.svg.png" alt="NPM" width="46">](https://www.npmjs.com/package/json-db-manager)
 
-Um simples gerenciador de json como "data base(DB)" local em sua aplicação bem __avançado__ e __maleável__ para usar como quiser.
+A simple json manager like "data base (DB)" local to your application, very __advanced__ and __malleable__ to use as you want.
 
-- Compatível com ES5 & ES6
+- Compatible with several EcmaScript (ES) technologies
 - Allowed to use "require()" and "import"
 
 ```js
 const db = new JsonDB();
 ```
 
->Você pode escolher o espacamendo colocando o numero de espaço dentro da classe `JsonDB`, sendo o `padrão: 0`
+>You can choose the spacing by placing the number of spaces inside the `JsonDB` class, the `default being: 0`
 
 
 ```js
 new JsonDB(2); // Espaçamento adicional
 ```
 
->Você tambem poderá optar entre um `json` armazenando "base64" ou "utf-8" que é o padrão. Para "uft-8" não insira um segundo parâmetro.
+>You can also choose between a `json` storing "base64" or "utf-8" which is the default. For "uft-8" do not enter a second parameter.
 
 ```js
 new JsonDB(0, "base64"); // Codificação opicional
@@ -25,7 +25,7 @@ new JsonDB(0, "base64"); // Codificação opicional
 ## Metodos
 ### GET
 
-__path__ é uma função que vai te fornecer os objetos assim que você inserir o caminho do arquivo json
+__path__ is a function that will provide you with the objects as soon as you enter the json file path
 
 ```js
 console.log(db.path("./dir").get())
@@ -41,7 +41,7 @@ console.log(db.path("./dir").get())
 ## 
 ### SET
 
-Passe a chave *"key"* de sua preferencia e o valor *"value"*
+Pass the *"key"* of your choice and the *"value"*
 
 ```js
 db.path("./dir").set("key", "value"); // Criando por parametro.
@@ -60,7 +60,7 @@ db.path("./dir").set({"key2": "value", "key3": "value"}); // Formatação com ob
 ## 
 ### DELETE
 
-Passe a chave *"key"* que deseje deletar
+Pass the *"key"* you want to delete
 
 ```js
 db.path("./dir").delete("keyExample");
@@ -74,7 +74,7 @@ db.path("./dir").delete("keyExample");
 ## 
 ### CLEAR
 
-Deleta todo json e o deixa já preparado para novos valores
+Delete all json and leave it ready for new values
 
 ```js
 db.path("./dir").clear();
