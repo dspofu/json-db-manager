@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.utf8 = void 0;
 const node_fs_1 = require("node:fs");
+const serverConfig_1 = require("./serverConfig");
 function utf8(param) {
     let space;
     if (!param.space) {
@@ -11,9 +12,10 @@ function utf8(param) {
         space = param.space;
     }
     return {
-        /**
-         * @param {string} key - example: get("key") || get()
-         */
+        hostView: (paramObj) => {
+            paramObj.log ? console.log(`Server Settings: Port ${paramObj.port} | Logs: ${paramObj.log} | Refresh: ${!paramObj.update ? false : true}`) : null;
+            (0, serverConfig_1.hostDB)(paramObj, param.path, "utf-8");
+        },
         get: (key) => {
             if (!key)
                 return param.get;
@@ -21,10 +23,6 @@ function utf8(param) {
                 return;
             return param.get[key];
         },
-        /**
-         * @param {object | string} key - example (...: "value")
-         * @param {object | string | number} value - value: example ("key": "...")
-         */
         set: (key, value) => {
             if (!key || value === undefined && typeof key !== 'object')
                 throw new Error("How to use: \"key\", \"value\"");
@@ -39,9 +37,6 @@ function utf8(param) {
             param.get[key] = value;
             (0, node_fs_1.writeFileSync)(param.path, JSON.stringify(param.get, null, space));
         },
-        /**
-         * @param {string} key - Use: "key" to delete a specific item.
-         */
         delete: (key) => {
             if (!key)
                 throw new Error("The use of a key is mandatory: \"key\"");

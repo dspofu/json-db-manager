@@ -6,7 +6,7 @@ const utf8_1 = require("./modules/utf8");
 const base64_1 = require("./modules/base64");
 function modify(dir, space, codifyType) {
     if (!(0, node_fs_1.existsSync)(dir))
-        throw new Error("Caminho não encontrado.");
+        throw new Error("Directory not found.");
     if (!(0, node_fs_1.readFileSync)(dir, 'utf-8'))
         (0, node_fs_1.writeFileSync)(dir, '{}');
     if (!["utf-8", "base64"].includes(codifyType) && codifyType)
@@ -25,13 +25,13 @@ function modify(dir, space, codifyType) {
             space
         });
     }
-    else
-        return {
-            get: () => { },
-            set: () => { },
-            delete: () => { },
-            clear: () => { },
-        };
+    return {
+        hostView: () => { },
+        get: () => { },
+        set: () => { },
+        delete: () => { },
+        clear: () => { },
+    };
 }
 class JsonDB {
     space;

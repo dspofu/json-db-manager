@@ -83,3 +83,19 @@ db.path("./dir").clear();
 ```js
 {} // Void
 ```
+##
+### hostView
+
+To raise a server with your JSON file
+- The "log" and "refresh" methods are optional and the default is false
+
+```js
+db.path("./test.json").hostView({port: 3000, log: true, update: true})
+```
+#### Resultado `exemplo`
+```js
+// Your browser
+1 {
+2   "KeyExample1": 8,
+3 }
+```

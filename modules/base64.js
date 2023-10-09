@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.base64 = void 0;
 const node_fs_1 = require("node:fs");
+const serverConfig_1 = require("./serverConfig");
 function base64(param) {
     let space;
     if (!param.space) {
@@ -11,9 +12,10 @@ function base64(param) {
         space = param.space;
     }
     return {
-        /**
-         * @param {string} key - example: get("key") || get()
-         */
+        hostView: (paramObj) => {
+            paramObj.log ? console.log(`Server Settings: Port ${paramObj.port} | Logs: ${paramObj.log} | Refresh: ${!paramObj.update ? false : true}`) : null;
+            (0, serverConfig_1.hostDB)(paramObj, param.path, "base64");
+        },
         get: (key) => {
             let obj = {};
             let keys = [];
@@ -25,10 +27,6 @@ function base64(param) {
                 return;
             return Buffer.from(JSON.stringify(obj[key].toString(), null, space)).toString("utf-8");
         },
-        /**
-         * @param {object | string} key - example (...: "value")
-         * @param {string} value - value: example ("key": "...")
-         */
         set: (key, value) => {
             if (!key || value === undefined && typeof key !== 'object')
                 throw new Error("How to use: \"key\", \"value\".");
@@ -49,9 +47,6 @@ function base64(param) {
             param.get[key] = Buffer.from(value).toString("base64");
             (0, node_fs_1.writeFileSync)(param.path, JSON.stringify(param.get, null, space));
         },
-        /**
-         * @param {string} key - Use: "key" to delete a specific item.
-         */
         delete: (key) => {
             if (!key)
                 throw new Error("The use of a key is mandatory: \"key\"");

@@ -1,5 +1,5 @@
-import { codifyOptions, CodifyUtf8, CodifyBase64 } from "./modules/constants";
-declare class JsonDB<typeEncoder extends codifyOptions = "utf-8"> {
+import { CodifyOptions, CodifyUtf8, CodifyBase64 } from "./modules/constants";
+declare class JsonDB<typeEncoder extends CodifyOptions = "utf-8"> {
     private space;
     private codifyType;
     /**
