@@ -17,7 +17,7 @@ A simple json manager like "data base (DB)" local to your application, very __ad
 
 ## 
 
-## How to use
+### How to use
 
 ```js
 const db = new JsonDB();
