@@ -29,7 +29,7 @@ const db = new JsonDB();
 new JsonDB(2); // Espaçamento adicional
 ```
 
->You can also choose between a `json` storing "base64" or "utf-8" which is the default. For "uft-8" do not enter a second parameter.
+>You can also choose between a `json` storing `"base64"` or `"utf-8"` which is the default. For `"uft-8"` do not enter a second parameter.
 
 ```js
 new JsonDB(0, "utf-8"); // Codificação opicional
@@ -131,12 +131,14 @@ db.path("./test.json").hostView({ port: 3000, update: true })
 
 While the `"on"` event is activated when the server is turned on, the `"request"` event is activated every time the server is accessed, such as when reloading the page or opening it for the first time.
 
+#### Object made available by the event: { settings: { port "number", update "boolean" } }
+
 ```js
 let num = 1;
 const server = db.path("./test.json").hostView({ port: 3000, update: true })
 
 server.on("read", (res) => {
-    console.log(`Project started.\nPort: ${a.settings.port}`);
+    console.log(`Project started.\nPort: ${res.settings.port}`);
 })
 
 server.on("request", (res) => {
