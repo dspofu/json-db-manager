@@ -6,18 +6,30 @@ interface Param {
 }
 interface ObjectHost {
     port: 8080 | 3000;
-    log?: boolean;
     update?: boolean;
+}
+type ServerEventsType = "read" | "request";
+interface ReadMethod {
+    settings: {
+        port: number;
+        update: boolean;
+    };
+}
+interface RequestMethod extends ReadMethod {
+}
+interface ServerManager {
+    on: (events: ServerEventsType, callback: (value: ReadMethod) => void) => object;
+    start: () => void;
 }
 interface CodifyUtf8 {
     /**
-     * @param param - { port: number, log: boolean, update: boolean }
+     * @param param - { port: number, update: boolean }
      */
-    hostView(param: ObjectHost): void;
+    hostView(param: ObjectHost): ServerManager;
     /**
      * @param {string} key - example: get("key") || get()
      */
-    get(key?: string): any;
+    get(key?: string): void;
     /**
      * @param {object | string} key - example (...: "value")
      * @param {object | string | number} value - value: example ("key": "...")
@@ -29,24 +41,15 @@ interface CodifyUtf8 {
     delete(key: string): void;
     clear(): void;
 }
-interface CodifyBase64 {
-    /**
-     * @param param - { port: number, log: true, update: true }
-     */
-    hostView(param: ObjectHost): void;
+interface CodifyBase64 extends CodifyUtf8 {
     /**
      * @param {string} key - example: get("key") || get()
      */
-    get(key?: string): any;
+    get(key?: string): void;
     /**
      * @param {object | string} key - example (...: "value")
      * @param {string} value - value: example ("key": "...")
      */
     set(key: string, value: string): void;
-    /**
-     * @param {string} key - Use: "key" to delete a specific item.
-     */
-    delete(key: string): void;
-    clear(): void;
 }
-export { CodifyOptions, Param, ObjectHost, CodifyUtf8, CodifyBase64 };
+export { ServerManager, CodifyOptions, ServerEventsType, ReadMethod, RequestMethod, Param, ObjectHost, CodifyUtf8, CodifyBase64 };

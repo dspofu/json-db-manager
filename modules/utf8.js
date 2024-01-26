@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.utf8 = void 0;
 const node_fs_1 = require("node:fs");
-const serverConfig_1 = require("./serverConfig");
+const manager_1 = require("./events/manager");
 function utf8(param) {
     let space;
     if (!param.space) {
@@ -13,8 +13,11 @@ function utf8(param) {
     }
     return {
         hostView: (paramObj) => {
-            paramObj.log ? console.log(`Server Settings: Port ${paramObj.port} | Logs: ${paramObj.log} | Refresh: ${!paramObj.update ? false : true}`) : null;
-            (0, serverConfig_1.hostDB)(paramObj, param.path, "utf-8");
+            if (!paramObj || !paramObj.port || typeof paramObj.port !== "number")
+                throw new Error("\"port\" requires a numeric value.");
+            if (paramObj.update && typeof paramObj?.update !== "boolean")
+                throw new Error("\"update\" only accepts boolean value.");
+            return (0, manager_1.serverEvents)(paramObj, param.path, "utf-8");
         },
         get: (key) => {
             if (!key)
@@ -24,7 +27,7 @@ function utf8(param) {
             return param.get[key];
         },
         set: (key, value) => {
-            if (!key || value === undefined && typeof key !== 'object')
+            if (!key || (value === undefined && typeof key !== 'object' && value !== null))
                 throw new Error("How to use: \"key\", \"value\"");
             if (typeof key == 'object') {
                 let values = [];

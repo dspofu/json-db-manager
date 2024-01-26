@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.base64 = void 0;
 const node_fs_1 = require("node:fs");
-const serverConfig_1 = require("./serverConfig");
+const manager_1 = require("./events/manager");
 function base64(param) {
     let space;
     if (!param.space) {
@@ -13,8 +13,11 @@ function base64(param) {
     }
     return {
         hostView: (paramObj) => {
-            paramObj.log ? console.log(`Server Settings: Port ${paramObj.port} | Logs: ${paramObj.log} | Refresh: ${!paramObj.update ? false : true}`) : null;
-            (0, serverConfig_1.hostDB)(paramObj, param.path, "base64");
+            if (!paramObj || !paramObj.port || typeof paramObj.port !== "number")
+                throw new Error("\"port\" requires a numeric value.");
+            if (paramObj.update && typeof paramObj?.update !== "boolean")
+                throw new Error("\"update\" only accepts boolean value.");
+            return (0, manager_1.serverEvents)(paramObj, param.path, "base64");
         },
         get: (key) => {
             let obj = {};
@@ -28,7 +31,7 @@ function base64(param) {
             return Buffer.from(JSON.stringify(obj[key].toString(), null, space)).toString("utf-8");
         },
         set: (key, value) => {
-            if (!key || value === undefined && typeof key !== 'object')
+            if (!key || (value === undefined && typeof key !== 'object' && value !== null))
                 throw new Error("How to use: \"key\", \"value\".");
             if (value !== undefined && typeof value !== 'string')
                 throw new Error("Just pass \"string\" in \"value\".");

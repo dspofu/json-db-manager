@@ -1,27 +1,29 @@
 {
-    "name": "json-db-manager",
-    "version": "0.1.19",
-    "description": "Optimized JSON: Simplifies and Enhances Data Reading, Writing, and Management.",
-    "main": "DB.Json.js",
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/dspofu/json-db-manager.git"
-    },
-    "keywords": [
-      "JSON",
-      "DataBase",
-      "Utilities",
-      "Back-End",
-      "Server",
-      "http",
-      "https",
-      "node"
-    ],
-    "author": "Dspofu <https://github.com/dspofu/>",
-    "license": "MIT",
-    "bugs": {
-      "url": "https://github.com/dspofu/json-db-manager/issues"
-    },
-    "homepage": "https://github.com/dspofu/json-db-manager#readme",
-    "type": "commonjs"
-  }
+  "name": "json-db-manager",
+  "version": "0.1.21",
+  "description": "Optimized JSON: Simplifies and Enhances Data Reading, Writing, and Management.",
+  "main": "DB.Json.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dspofu/json-db-manager.git"
+  },
+  "keywords": [
+    "JSON",
+    "DataBase",
+    "Utilities",
+    "Back-End",
+    "Server",
+    "http",
+    "https",
+    "node"
+  ],
+  "author": "Dspofu <https://github.com/dspofu/>",
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.6.2"
+  },
+  "bugs": {
+    "url": "https://github.com/dspofu/json-db-manager/issues"
+  },
+  "homepage": "https://github.com/dspofu/json-db-manager#readme"
+}

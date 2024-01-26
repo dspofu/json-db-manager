@@ -11,27 +11,16 @@ function modify(dir, space, codifyType) {
         (0, node_fs_1.writeFileSync)(dir, '{}');
     if (!["utf-8", "base64"].includes(codifyType) && codifyType)
         throw new Error("Data validation types are: \"utf-8\" or \"base64\"");
-    if (!codifyType || codifyType == "utf-8") {
-        return (0, utf8_1.utf8)({
-            get: JSON.parse((0, node_fs_1.readFileSync)(dir, 'utf-8')),
-            path: dir,
-            space // Espaçamento do Json
-        });
-    }
-    else if (codifyType == "base64") { // base64
-        return (0, base64_1.base64)({
-            get: JSON.parse((0, node_fs_1.readFileSync)(dir, 'utf-8')),
-            path: dir,
-            space
-        });
-    }
-    return {
-        hostView: () => { },
-        get: () => { },
-        set: () => { },
-        delete: () => { },
-        clear: () => { },
+    const methods = {
+        get: JSON.parse((0, node_fs_1.readFileSync)(dir, 'utf-8')),
+        path: dir,
+        space // Espaçamento do Json
     };
+    if (!codifyType || codifyType == "utf-8")
+        return (0, utf8_1.utf8)(methods);
+    else if (codifyType == "base64")
+        return (0, base64_1.base64)(methods);
+    return methods;
 }
 class JsonDB {
     space;

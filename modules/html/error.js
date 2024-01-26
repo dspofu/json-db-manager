@@ -31,7 +31,7 @@ const htmlError = `<!DOCTYPE html>
   <div class="container">
     <h1>Erro 404</h1>
     <p>Opss! The page you are looking for was not found</p><img
-      src="" width="25%" alt="Image is not found">
+      src="\\image" width="20%" alt="Image is not found">
     <p><a href="/data">Return to home page</a></p>
   </div>
 </body>
