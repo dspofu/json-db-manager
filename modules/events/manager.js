@@ -14,7 +14,7 @@ function serverEvents(clientSettings, dirFile, encoding) {
          */
         on: (events, callback) => {
             if (events == "read")
-                return methodRead = { events, callback: () => ({ settings }) };
+                return methodRead = { events, callback: () => callback({ settings }) };
             else if (events == "request")
                 return methodRequest = { events, callback: () => callback({ settings }) };
             else

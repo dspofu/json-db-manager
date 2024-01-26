@@ -5,15 +5,7 @@ const tslib_1 = require("tslib");
 const fs_1 = require("fs");
 const http_1 = tslib_1.__importDefault(require("http"));
 const error_1 = require("./html/error");
-let messageExec;
-let readExec;
 function hostDB(param, dirFile, encoding, eventRead, eventRequest) {
-    if (eventRequest?.events == "request") {
-        messageExec = eventRequest.callback;
-    }
-    else if (eventRead?.events == "read") {
-        readExec = eventRead.callback;
-    }
     let contentJson;
     function json64() {
         let content = JSON.parse((0, fs_1.readFileSync)(dirFile, "utf-8"));
@@ -39,7 +31,7 @@ function hostDB(param, dirFile, encoding, eventRead, eventRequest) {
         switch (req.url) {
             case "/data":
                 // console.log("IP: ", req.socket.remoteAddress);
-                messageExec(); // Mensagem por requisição
+                eventRequest?.callback(); // REQUEST
                 res.writeHead(200, { "Content-Type": "application/json" });
                 res.end(contentJson);
                 break;
@@ -56,7 +48,7 @@ function hostDB(param, dirFile, encoding, eventRead, eventRequest) {
                 }
                 break;
         }
-    }).listen(param.port, "0.0.0.0", readExec); // read
+    }).listen(param.port, "0.0.0.0", eventRead?.callback() /* READ */);
     if (param.update) {
         setInterval(() => {
             switch (encoding) {

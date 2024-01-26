@@ -2,18 +2,18 @@
 
 A simple json manager like `"data base (DB)"` local to your application, very __advanced__ and __malleable__ to use as you want.
 
-- Compatible with several EcmaScript (ES) technologies
-- Allowed to use `"require()"` and `"import"`
+* Compatible with several EcmaScript (ES) technologies
+* Allowed to use `"require()"` and `"import"`
 
 ## New features or changes
 
-- hostView's `"log"` method no longer exists
-- Added `"read"` and `"request"` events for better log handling
-- The `"hostView"` method received methods for manipulation
+* hostView's `"log"` method no longer exists
+* Added `"read"` and `"request"` events for better log handling
+* The `"hostView"` method received methods for manipulation
 
 ## Bugs fixed from the previous version
 
-- null
+* The "read" event was not responding.
 
 ## 
 
@@ -117,9 +117,9 @@ db.path("./dir").clear();
 
 To create a server with your JSON file
 
-- The `"port"` method is responsible for listing the server port.
-- The `"update"` method allows when the page is reloaded to update the information based on the `"json file"`.
-- The `"update"` is optional and the default is `"false"`
+* The `"port"` method is responsible for listing the server port.
+* The `"update"` method allows when the page is reloaded to update the information based on the `"json file"`.
+* The `"update"` is optional and the default is `"false"`
 
 ```js
 db.path("./test.json").hostView({ port: 3000, update: true })
@@ -164,4 +164,20 @@ server.start()//server initialization
 Project started.
 Port: 3000
 Project acessed: 1 time
+```
+
+>To connect other devices to the server, simply be on the same network and use the `"IPv4"` of your project machine along with the `"port"` listed.
+
+### Tip for `"Windows"` users:
+
+* Open "cmd" and run `"ipconfig"`.
+* Look for the numbers in the line that says `"IPv4 Address"`.
+
+#### Resultado `exemplo`
+
+```log
+# URL in your browser | example
+
+http://192.168.0.22:3000
+
 ```
