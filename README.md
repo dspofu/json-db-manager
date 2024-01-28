@@ -7,9 +7,8 @@ A simple json manager like `"data base (DB)"` local to your application, very __
 
 ## New features or changes
 
-* hostView's `"log"` method no longer exists
-* Added `"read"` and `"request"` events for better log handling
-* The `"hostView"` method received methods for manipulation
+* A new parameter in the class, which is for the creation of the JSON file that was defined in "Path" and that if no existing will be created a file.
+* "Request" events now have more items that return to their object.
 
 ## Bugs fixed from the previous version
 
@@ -33,6 +32,11 @@ new JsonDB(2); // Espaçamento adicional
 
 ```js
 new JsonDB(0, "utf-8"); // Codificação opicional
+```
+>The third parameter is responsible for management if your `json` file defined in `"path"` does not exist, can automatically create the file, being the standard: `"false"`
+
+```js
+new JsonDB(0, "utf-8", true); // opicional para para criar arquivo.
 ```
 
 ## Metodos
@@ -131,18 +135,43 @@ db.path("./test.json").hostView({ port: 3000, update: true })
 
 While the `"on"` event is activated when the server is turned on, the `"request"` event is activated every time the server is accessed, such as when reloading the page or opening it for the first time.
 
-#### Object made available by the event: { settings: { port "number", update "boolean" } }
+### Object made available by the event `"read"`
+```json
+{
+  "settings": {
+    "port": "number",
+    "update": "boolean"
+  }
+}
+```
+* __port__ - Refers to the door chosen by you to the server.
+* __update__ - To indicate if the server will be updating the page.
+
+### Object made available by the event `"request"`
+```json
+{
+  "url": "string",
+  "method": "string",
+  "ip": "number" 
+}
+```
+* __url__ - The route used to display `"JSON"`.
+* __method__ - The requisition method that was made on the server.
+* __ip__ - It is the `"IP"` of the device that accessed the server on the JSON file route.
+
+### Object made available by the event `"request"`
+url: string, method: string, ip: number
 
 ```js
 let num = 1;
 const server = db.path("./test.json").hostView({ port: 3000, update: true })
 
-server.on("read", (res) => {
-    console.log(`Project started.\nPort: ${res.settings.port}`);
+server.on("read", (req) => {
+    console.log(`Project started.\nPort: ${req.settings.port}\n`);
 })
 
-server.on("request", (res) => {
-    console.log(`Project acessed: ${num} time`);
+server.on("request", (req) => {
+    console.log(`Project acessed: ${num} time\nURL acess: "${req.url}"\nAccessed by IP: ${req.ip}`);
     num++
 })
 
@@ -163,7 +192,10 @@ server.start()//server initialization
 
 Project started.
 Port: 3000
+
 Project acessed: 1 time
+URL acess: "/data"
+Accessed by IP: 192.168.0.17
 ```
 
 >To connect other devices to the server, simply be on the same network and use the `"IPv4"` of your project machine along with the `"port"` listed.

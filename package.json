@@ -1,6 +1,6 @@
 {
   "name": "json-db-manager",
-  "version": "0.1.22",
+  "version": "1.1.0",
   "description": "Optimized JSON: Simplifies and Enhances Data Reading, Writing, and Management.",
   "main": "DB.Json.js",
   "repository": {

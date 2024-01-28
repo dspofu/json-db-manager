@@ -13,14 +13,17 @@ function serverEvents(clientSettings, dirFile, encoding) {
          * @param callback Your code to run in the respective event.
          */
         on: (events, callback) => {
-            if (events == "read")
-                return methodRead = { events, callback: () => callback({ settings }) };
-            else if (events == "request")
-                return methodRequest = { events, callback: () => callback({ settings }) };
-            else
+            if (events === "read") {
+                methodRead = { events, callback: () => callback({ settings }) };
+            }
+            else if (events === "request") {
+                methodRequest = { events, callback: (req) => callback(req) };
+            }
+            else {
                 throw new Error(`Unknown or not found event: ${events}`);
+            }
         },
-        start: () => (0, serverConfig_1.hostDB)(settings, dirFile, encoding, methodRead, methodRequest)
+        start: () => (0, serverConfig_1.hostDB)(settings, dirFile, encoding, methodRead, methodRequest),
     };
 }
 exports.serverEvents = serverEvents;

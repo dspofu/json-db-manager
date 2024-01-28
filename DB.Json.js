@@ -4,9 +4,14 @@ exports.JsonDB = void 0;
 const node_fs_1 = require("node:fs");
 const utf8_1 = require("./modules/utf8");
 const base64_1 = require("./modules/base64");
-function modify(dir, space, codifyType) {
-    if (!(0, node_fs_1.existsSync)(dir))
+function modify(dir, space, codifyType, autoCreatFile) {
+    if (!(0, node_fs_1.existsSync)(dir) && autoCreatFile == true) {
+        (0, node_fs_1.writeFile)(dir, "{}", (err) => { if (err)
+            throw new Error(`Error when trying to create file: ${dir}`); });
+    }
+    else if (!(0, node_fs_1.existsSync)(dir)) {
         throw new Error("Directory not found.");
+    }
     if (!(0, node_fs_1.readFileSync)(dir, 'utf-8'))
         (0, node_fs_1.writeFileSync)(dir, '{}');
     if (!["utf-8", "base64"].includes(codifyType) && codifyType)
@@ -25,13 +30,16 @@ function modify(dir, space, codifyType) {
 class JsonDB {
     space;
     codifyType;
+    autoCreatFile;
     /**
     * @param {Number} space - Json spacing control. Default: "0"
     * @param {string} codifyType - Written and transcribed from "base64". Default: "utf-8"
+    * @param {boolean} autoCreatFile - Automatically create a file if it doesn't exist
     */
-    constructor(space, codifyType) {
+    constructor(space, codifyType, autoCreatFile) {
         this.space = space;
         this.codifyType = codifyType;
+        this.autoCreatFile = autoCreatFile;
         if (typeof space !== "number" && space)
             throw new Error(`I'm pretty sure \"${space}\" is not a number.`);
         if (typeof codifyType !== "string" && codifyType && codifyType == "")
@@ -40,7 +48,7 @@ class JsonDB {
     /**
      * @param {string} dir - JSON file root directory.
      */
-    path = (dir) => modify(dir, this.space, this.codifyType);
+    path = (dir) => modify(dir, this.space, this.codifyType, this.autoCreatFile);
 }
 exports.JsonDB = JsonDB;
 //# sourceMappingURL=DB.Json.js.map

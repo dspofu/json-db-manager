@@ -15,10 +15,13 @@ interface ReadMethod {
         update: boolean;
     };
 }
-interface RequestMethod extends ReadMethod {
+interface RequestMethod {
+    url: string;
+    method: string;
+    ip: number;
 }
 interface ServerManager {
-    on: (events: ServerEventsType, callback: (value: ReadMethod) => void) => object;
+    on: <T extends ServerEventsType>(events: T, callback: (value: T extends "read" ? ReadMethod : RequestMethod) => void) => object;
     start: () => void;
 }
 interface CodifyUtf8 {

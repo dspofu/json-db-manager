@@ -30,8 +30,7 @@ function hostDB(param, dirFile, encoding, eventRead, eventRequest) {
     http_1.default.createServer((req, res) => {
         switch (req.url) {
             case "/data":
-                // console.log("IP: ", req.socket.remoteAddress);
-                eventRequest?.callback(); // REQUEST
+                eventRequest.callback({ url: req.url, method: req.method, ip: req.socket.remoteAddress }); // REQUEST
                 res.writeHead(200, { "Content-Type": "application/json" });
                 res.end(contentJson);
                 break;
