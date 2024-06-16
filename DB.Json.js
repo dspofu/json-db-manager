@@ -17,8 +17,8 @@ function modify(dir, space, codifyType, autoCreatFile) {
     if (!["utf-8", "base64"].includes(codifyType) && codifyType)
         throw new Error("Data validation types are: \"utf-8\" or \"base64\"");
     const methods = {
-        get: JSON.parse((0, node_fs_1.readFileSync)(dir, 'utf-8')),
-        path: dir,
+        get: JSON.parse((0, node_fs_1.readFileSync)(dir, 'utf-8')), // Conteudo do json
+        path: dir, // Caminho do arquivo
         space // Espaçamento do Json
     };
     if (!codifyType || codifyType == "utf-8")

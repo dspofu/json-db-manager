@@ -12,25 +12,24 @@ function hostDB(param, dirFile, encoding, eventRead, eventRequest) {
         let obj = {};
         let keys = [];
         Object.keys(content).map((value) => keys.push(value));
-        Object.values(content).map((value, index) => ({ [keys[index]]: Buffer.from(value.toString(), 'base64').toString("utf-8") })).map((value) => Object.assign(obj, value));
+        Object.values(content).map((value, index) => ({ [keys[index]]: Buffer.from(value.toString(), 'base64').toString("utf-8") })).find(value => Object.assign(obj, value));
         return JSON.stringify(obj);
     }
-    switch (encoding) {
-        case "utf-8":
-            contentJson = (0, fs_1.readFileSync)(dirFile, "utf-8");
-            break;
-        case "base64":
-            contentJson = json64();
-            break;
-        default:
-            contentJson = (0, fs_1.readFileSync)(dirFile, "utf-8");
+    if (encoding == "utf-8") {
+        contentJson = (0, fs_1.readFileSync)(dirFile, "utf-8");
+    }
+    else if (encoding == "base64") {
+        contentJson = json64();
+    }
+    else {
+        contentJson = (0, fs_1.readFileSync)(dirFile, "utf-8");
     }
     if (!param.port || isNaN(param.port))
         throw new Error("Pass a port to the server.");
     http_1.default.createServer((req, res) => {
         switch (req.url) {
             case "/data":
-                eventRequest.callback({ url: req.url, method: req.method, ip: req.socket.remoteAddress }); // REQUEST
+                eventRequest?.callback({ url: req.url, method: req.method, ip: req.socket.remoteAddress }); // REQUEST
                 res.writeHead(200, { "Content-Type": "application/json" });
                 res.end(contentJson);
                 break;
