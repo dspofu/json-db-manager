@@ -449,7 +449,7 @@ db.path("./dir").fetch("mm").mapper((obj, keys) => { if(obj[keys] === 12) delete
 
 * **[Methods](#methods-1)** 👈
 
-# d
+#
 
 ### HOSTVIEW
 

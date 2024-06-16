@@ -6,8 +6,12 @@ const utf8_1 = require("./modules/utf8");
 const base64_1 = require("./modules/base64");
 function modify(dir, space, codifyType, autoCreatFile) {
     if (!(0, node_fs_1.existsSync)(dir) && autoCreatFile == true) {
-        (0, node_fs_1.writeFile)(dir, "{}", (err) => { if (err)
-            throw new Error(`Error when trying to create file: ${dir}`); });
+        try {
+            (0, node_fs_1.writeFileSync)(dir, "{}");
+        }
+        catch (err) {
+            throw new Error(`Error when trying to create file: ${dir}`);
+        }
     }
     else if (!(0, node_fs_1.existsSync)(dir)) {
         throw new Error("Directory not found.");
