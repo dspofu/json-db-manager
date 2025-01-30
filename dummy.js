@@ -1,1 +1,1 @@
-export {}; // For github detect language
+module.exports = {}; // For github detect language
