@@ -1,3 +1,5 @@
+# Note: `new version in progress`
+
 # [<img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="35">](https://github.com/dspofu/json-db-manager) json-db-manager [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/2560px-Npm-logo.svg.png" alt="NPM" width="46">](https://www.npmjs.com/package/json-db-manager)
 
 A simple json manager like `"data base (DB)"` local to your application, very __advanced__ and __malleable__ to use as you want.
